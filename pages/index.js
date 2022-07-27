@@ -24,13 +24,16 @@ export default function Home() {
       </div>
 
       <Canvas 
-        shadows
+        shadows={{type: THREE.PCFSoftShadowMap}}
         orthographic
+        onCreated={state => {
+          state.gl.toneMapping = THREE.ACESFilmicToneMapping
+        }}
         camera={{
           far: 1000,
           near: 0.1,
           zoom: width <= 500 ? 20 : 50,
-          position: [-10 * 10, 16.8 * 10, 16 * 10]
+          position: [-10 * 10, 16.8 * 10, 16 * 10],
         }}
       >
         {/* <primitive object={new THREE.GridHelper(100, 50, "teal", "teal")} position={[0, 0, 0]} /> */}
@@ -41,8 +44,15 @@ export default function Home() {
         <ambientLight intensity={0.5} />
         <pointLight
           intensity={0.5}
-          position={[20, 50, 20]}
+          position={[10, 40, 10]}
           castShadow
+          shadowMapSize={new THREE.Vector2 ( 2 ** 10, 2 ** 10 )}
+          // shadowNormalBias={0.02}
+          // shadowBias={-0.0005}
+          // shadowCameraTop={5}
+          // shadowCameraBottom={-5}
+          // shadowCameraRight={5}
+          // shadowCameraLeft={-5}
         />
 
         <Model position={[-11, 0, 10]} />
