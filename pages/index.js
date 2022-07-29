@@ -1,8 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import Head from 'next/head'
-import Model from '../public/Rhythm'
+import Model from '../public/Rhythm-draco'
 import * as THREE from "three"
-import { OrbitControls } from '@react-three/drei'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
@@ -47,12 +46,6 @@ export default function Home() {
           position={[10, 40, 10]}
           castShadow
           shadowMapSize={new THREE.Vector2 ( 2 ** 10, 2 ** 10 )}
-          // shadowNormalBias={0.02}
-          // shadowBias={-0.0005}
-          // shadowCameraTop={5}
-          // shadowCameraBottom={-5}
-          // shadowCameraRight={5}
-          // shadowCameraLeft={-5}
         />
 
         <Model position={[-11, 0, 10]} />

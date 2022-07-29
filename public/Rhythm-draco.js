@@ -7,7 +7,7 @@ import { useGLTF, useAnimations } from '@react-three/drei'
 
 export default function Model({ ...props }) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/rhythm.glb')
+  const { nodes, materials, animations } = useGLTF('/rhythm-draco.glb')
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function Model({ ...props }) {
       actions[key].play();
     })
   }, [])
-  
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
@@ -23,7 +23,7 @@ export default function Model({ ...props }) {
           <mesh name="円柱001" castShadow receiveShadow geometry={nodes.円柱001.geometry} material={materials.stick} />
           <mesh name="円柱001_1" castShadow receiveShadow geometry={nodes.円柱001_1.geometry} material={materials.edgeline} />
         </group>
-        <mesh name="effect" receiveShadow geometry={nodes.effect.geometry} material={materials.effect} position={[6, 20.4, 11.77]} rotation={[-Math.PI, 0, -Math.PI]} scale={0} />
+        <mesh name="effect" castShadow receiveShadow geometry={nodes.effect.geometry} material={materials.effect} position={[6, 20.4, 11.77]} rotation={[-Math.PI, 0, -Math.PI]} scale={0} />
         <group name="geo" position={[1, 8, 0]}>
           <mesh name="立方体003" castShadow receiveShadow geometry={nodes.立方体003.geometry} material={materials.main} />
           <mesh name="立方体003_1" castShadow receiveShadow geometry={nodes.立方体003_1.geometry} material={materials.light} />
@@ -65,4 +65,4 @@ export default function Model({ ...props }) {
   )
 }
 
-useGLTF.preload('/rhythm.glb')
+useGLTF.preload('/rhythm-draco.glb')
