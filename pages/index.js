@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import Head from 'next/head'
 import Model from '../public/Rhythm-draco'
+import { Loader } from '@react-three/drei'
 import * as THREE from "three"
 import { useEffect, useState } from 'react'
 
@@ -50,6 +51,8 @@ export default function Home() {
 
         <Model position={[-11, 0, 10]} />
       </Canvas>
+
+      <Loader />
     </div>
   )
 }
